@@ -1,0 +1,44 @@
+int ECHO = 9;
+int TRIG= 8;
+int LED = 10;
+
+long duracao;
+long distancia;
+
+void setup() {
+  pinMode(TRIG, OUTPUT);
+  pinMode(ECHO, INPUT);
+  pinMode(LED, OUTPUT);
+
+  Serial.begin(9600);
+}
+
+void loop() {
+
+  // Gera o pulso ultrassônico
+  digitalWrite(TRIG, LOW);
+  delayMicroseconds(2);
+
+  digitalWrite(TRIG, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG, LOW);
+
+  // Mede o tempo de retorno do sinal
+  duracao = pulseIn(ECHO, HIGH);
+
+  // Converte para centímetros
+  distancia = duracao / 58;
+
+  Serial.print("Distancia: ");
+  Serial.print(distancia);
+  Serial.println(" cm");
+
+  // Acende o LED se estiver a menos de 90 cm
+  if (distancia <= 90) {
+    digitalWrite(LED, HIGH);
+  } else {
+    digitalWrite(LED, LOW);
+  }
+
+  delay(200);
+}
