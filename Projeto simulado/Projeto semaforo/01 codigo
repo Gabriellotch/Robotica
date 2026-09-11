@@ -1,1 +1,45 @@
+int vermelho = 5;
+int amarelo = 4;
+int verde = 3;
 
+int vermelhop = 8; // Vermelho Pedestre
+int verdep = 9;    // Verde Pedestre
+
+void setup()
+{
+  pinMode(vermelho, OUTPUT);
+  pinMode(amarelo, OUTPUT);
+  pinMode(verde, OUTPUT);
+  pinMode(vermelhop, OUTPUT);
+  pinMode(verdep, OUTPUT);
+}
+
+void loop()
+{
+  // 1. Carros VERDE / Pedestres VERMELHO
+  digitalWrite(vermelho, LOW);
+  digitalWrite(amarelo, LOW);
+  digitalWrite(verde, HIGH);
+  
+  digitalWrite(vermelhop, HIGH);
+  digitalWrite(verdep, LOW);
+  delay(3000); // Aguarda 3 segundos
+
+  // 2. Carros AMARELO / Pedestres VERMELHO
+  digitalWrite(vermelho, LOW);
+  digitalWrite(amarelo, HIGH);
+  digitalWrite(verde, LOW);
+  
+  digitalWrite(vermelhop, HIGH);
+  digitalWrite(verdep, LOW);
+  delay(1000); // Aguarda 1 segundo
+
+  // 3. Carros VERMELHO / Pedestres VERDE
+  digitalWrite(vermelho, HIGH);
+  digitalWrite(amarelo, LOW);
+  digitalWrite(verde, LOW);
+  
+  digitalWrite(vermelhop, LOW);
+  digitalWrite(verdep, HIGH);
+  delay(3000); // Aguarda 3 segundos
+}
